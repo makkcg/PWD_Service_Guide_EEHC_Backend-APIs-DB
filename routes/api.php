@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\APIs\EmployeeController;
-
+use App\Http\Controllers\APIs\ChatController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +30,26 @@ Route::group(["prefix" => "v1"], function () {
             Route::post("edit", [EmployeeController::class, "edit"]);
             Route::post("image", [EmployeeController::class, "userProfileImage"]);
             Route::get("/", [EmployeeController::class, "profile"]);
+        });
+
+        Route::group(["prefix" => "chat", "middleware" => ["auth:sanctum", "scopes:user"]], function () {
+            Route::get("openChat", [ChatController::class, "openChatForEmployee"]);
+            Route::get("endChat", [ChatController::class, "endChatForEmployee"]);
+            Route::post("sendMessage", [ChatController::class, "sendMessage"]);
+        });
+    });
+
+    Route::group(["prefix" => "deaf"], function () {
+        Route::group(["prefix" => "auth"], function () {
+
+        });
+        Route::group(["prefix" => "profile", "middleware" => ["auth:sanctum", "scopes:user"]], function () {
+
+        });
+
+        Route::group(["prefix" => "chat", "middleware" => ["auth:sanctum", "scopes:user"]], function () {
+            Route::post("scanChat", [ChatController::class, "scanChat"]);
+            Route::post("sendMessage", [ChatController::class, "sendMessage"]);
         });
     });
 
