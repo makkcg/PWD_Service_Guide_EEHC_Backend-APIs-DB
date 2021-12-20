@@ -15,4 +15,14 @@ class Chat extends Model
     {
         return $this->hasMany(Message::class, 'chat_id', 'id');
     }
+
+    public function deaf()
+    {
+        return $this->hasOne(User::class, 'id', 'deaf_id');
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(User::class, 'id', 'employee_id');
+    }
 }
