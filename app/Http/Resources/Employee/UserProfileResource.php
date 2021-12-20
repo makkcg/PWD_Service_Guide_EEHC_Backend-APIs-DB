@@ -22,7 +22,7 @@ class UserProfileResource extends JsonResource
             'email' => $this->email,
             'branch' => $this->branch,
             'image' => url($this->image != null ?  '/employee/' . $this->image : '/Users/avatar.png'),
-            'qrCode' => url($this->qr_code != null ? '/employee/' . $this->image : '/Users/avatar.png'),
+            'qrCode' => url($this->qr_code != null ? '/qrcodes/' . $this->qr_code : '/Users/avatar.png'),
             'access_token' => $this->access_token,
 
         ];

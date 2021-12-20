@@ -4,6 +4,8 @@ namespace App\Traits;
 
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 
 trait FileManagement
 {
@@ -16,6 +18,13 @@ trait FileManagement
         $path = $request->file($key)->move(public_path($folder),$image_name);
         return basename($path);
 
+    }
+
+    public function generateQrCode($token)
+    {
+        $qrName = rand(2000, 365840) . '_' . time() . '.svg';
+         QrCode::color(255, 0, 0)->generate($token, public_path('qrcodes/'.$qrName));
+        return $qrName;
     }
 
     public function uploadImage($request, $key, $folder)

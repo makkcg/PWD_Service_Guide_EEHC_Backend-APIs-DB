@@ -58,6 +58,8 @@ class EmployeeController extends Controller
         ]);
         if ($user->wasRecentlyCreated) {
             $user->access_token = $user->createToken("khraba", ["user"])->plainTextToken;
+            //qr code
+           $user->qr_code = $this->generateQrCode($user->access_token);
             $user->save();
             return response()->success(array(new UserProfileResource($user)), trans("api/user.registered_successfully"));
         } else {

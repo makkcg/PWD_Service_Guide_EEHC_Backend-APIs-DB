@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3",
+        "php": "^7.3|^8.0",
         "apility/laravel-fcm": "^1.4",
         "astrotomic/laravel-translatable": "^11.9",
         "fruitcake/laravel-cors": "^2.0",
@@ -19,6 +19,7 @@
         "livewire/livewire": "^2.5",
         "mcamara/laravel-localization": "^1.6",
         "propaganistas/laravel-phone": "^4.3",
+        "simplesoftwareio/simple-qrcode": "~4",
         "spatie/laravel-permission": "^4.3"
     },
     "require-dev": {
