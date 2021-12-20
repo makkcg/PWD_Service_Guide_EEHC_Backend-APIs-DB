@@ -1,17 +1,7 @@
 <?php
 
-use App\Http\Controllers\APIs\CategoryController;
-use App\Http\Controllers\APIs\ContactController;
-use App\Http\Controllers\APIs\ContactMessageController;
-use App\Http\Controllers\APIs\CountryController;
-use App\Http\Controllers\APIs\HomeController;
-use App\Http\Controllers\APIs\NationalityController;
-use App\Http\Controllers\APIs\OfferController;
-use App\Http\Controllers\APIs\ShopController;
-use App\Http\Controllers\APIs\ShopFavouriteController;
-use App\Http\Controllers\APIs\UserController;
-use App\Http\Controllers\APIs\SettingController;
-use App\Http\Controllers\APIs\NotificationController;
+use App\Http\Controllers\APIs\EmployeeController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,28 +20,20 @@ Route::middleware("auth:sanctum", "verified")->get("/user", function (Request $r
     return $request->user();
 });
 Route::group(["prefix" => "v1"], function () {
-    Route::group(["prefix" => "user"], function () {
+    Route::group(["prefix" => "employee"], function () {
         Route::group(["prefix" => "auth"], function () {
-            Route::post("login", [UserController::class, "login"]);
-            Route::post("sociallogin", [UserController::class, "socialLogin"]);
-            Route::post("verification-url", [UserController::class, "sendAccountVerifyLink"])->middleware(["auth:sanctum", "scopes:user"]);
-            Route::post("forget", [UserController::class, "forget"]);
-            Route::post("change", [UserController::class, "changePassword"])->middleware(["auth:sanctum", "verified", "scopes:user"]);
-            Route::post("register", [UserController::class, "register"]);
-            Route::get("logout", [UserController::class, "logout"])->middleware(["auth:sanctum", "scopes:user"]);
+            Route::post("login", [EmployeeController::class, "login"]);
+            Route::post("register", [EmployeeController::class, "register"]);
+            Route::get("logout", [EmployeeController::class, "logout"])->middleware(["auth:sanctum", "scopes:user"]);
         });
         Route::group(["prefix" => "profile", "middleware" => ["auth:sanctum", "scopes:user"]], function () {
-            Route::post("edit", [UserController::class, "edit"]);
-            Route::post("image", [UserController::class, "userProfileImage"]);
-            Route::get("/", [UserController::class, "profile"]);
-        });
-        Route::group(["prefix" => "address", "middleware" => ["auth:sanctum", "verified", "scopes:user"]], function () {
-            Route::post("store", [UserController::class, "storeAddress"]);
-            Route::post("edit", [UserController::class, "editAddress"]);
-            Route::post("delete", [UserController::class, "deleteAddress"]);
-            Route::post("list", [UserController::class, "allAddresses"]);
+            Route::post("edit", [EmployeeController::class, "edit"]);
+            Route::post("image", [EmployeeController::class, "userProfileImage"]);
+            Route::get("/", [EmployeeController::class, "profile"]);
         });
     });
+
+
     Route::group(["prefix" => "country"], function () {
         Route::get("search", [CountryController::class, "searchCountries"]);
     });

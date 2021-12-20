@@ -11,10 +11,11 @@ trait FileManagement
     {
         if (!$request->hasFile($key))
             return null;
-     //   $path = $request->file($key)->store($folder, 'public');
+
         $image_name = rand(2000, 365840) . '_' . time() . '.' . $request->file($key)->getClientOriginalExtension();
-        $path = $request->file($key)->move(public_path('../../../api.4fdev.com/basmety/storage/'.$folder),$image_name);
+        $path = $request->file($key)->move(public_path($folder),$image_name);
         return basename($path);
+
     }
 
     public function uploadImage($request, $key, $folder)
@@ -44,13 +45,20 @@ trait FileManagement
         }
     }
 
-    protected function deleteFile($path, $disk = "public")
+    protected function deleteFile($path)
     {
-        return Storage::disk($disk)->delete($path);
+        try {
+            unlink($path);
+        } catch (\Exception $e) {
+            return $path;
+        }
+
+        return true;
     }
 
     protected function loadFile($path, $disk = "public")
     {
+
         return Storage::disk($disk)->url($path);
     }
 

@@ -15,6 +15,7 @@ class CreateChatsTable extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('status');
             $table->foreignId('deaf_id');
             $table->foreign('deaf_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('employee_id');

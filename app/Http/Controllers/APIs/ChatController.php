@@ -14,40 +14,52 @@ class ChatController extends Controller
 {
     use FileManagement;
 
-    /**
-     * Show chats
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    public function chat()
+    public function scanChat(Request $request)
     {
-
-       //chat messages
-      $chat=Chat::where('user_id',auth()->user()->id)->first();
-        if(!isset($chat))
-           return  $this->response([]);
-      $chatMessages= Message::where('chat_id', $chat->id)->get();
-      //mark as read
-       // $message= Message::where('chat_id', $chat->id)->update(['read' => 1]);
-        return $this->response($chatMessages);
-    }
-
-
-    public function openChat(Request $request)
-    {
+         $request->validate(
+            [
+                'employee_id'            => 'required|integer',
+            ]);
         $chatIsset=Chat::where('deaf_id',auth()->user()->id)->where('employee_id', $request->employee_id)->first();
         if(!isset($chatIsset)){
-            Chat::create([
+          $chat = Chat::create([
                 'deaf_id' =>auth()->user()->id,
-                'employee_id' => $request->employee_id
+                'employee_id' => $request->employee_id,
+                'status' => 1,
             ]);
         }
-        $chat=Chat::where('deaf_id',auth()->user()->id)->where('employee_id', $request->employee_id)->first();
+        else{
+            $chat=Chat::where('deaf_id',auth()->user()->id)->where('employee_id', $request->employee_id)->first();
+            $chat->update('status', 1);
+        }
         return response()->success($chat , trans("api/user.registered_successfully"));
-
     }
 
+    public function openChatForDeaf()
+    {
+        $chat=Chat::where('deaf_id',auth()->user()->id)->where('status', 1)->first();
+         Message::where('chat_id', $chat->id)->update(['deaf_view' => 1]);
+        return response()->success($chat , trans("api/user.registered_successfully"));
+    }
+
+    public function endChatForDeaf()
+    {
+      Chat::where('deaf_id',auth()->user()->id)->update('status', 0);
+        return response()->success([] , trans("api/user.registered_successfully"));
+    }
+
+    public function openChatForEmployee()
+    {
+        $chat=Chat::where('employee_id',auth()->user()->id)->where('status', 1)->first();
+        Message::where('chat_id', $chat->id)->update(['employee_view' => 1]);
+        return response()->success($chat , trans("api/user.registered_successfully"));
+    }
+
+    public function endChatForEmployee()
+    {
+        Chat::where('employee_id',auth()->user()->id)->update('status', 0);
+        return response()->success([] , trans("api/user.registered_successfully"));
+    }
 
     /**
      * Persist message to database
@@ -57,44 +69,34 @@ class ChatController extends Controller
      */
     public function sendMessage(Request $request)
     {
-    $chatIsset=Chat::where('user_id',auth()->user()->id)->first();
-    if(!isset($chatIsset)){
-        Chat::create([
-            'user_id' =>auth()->user()->id
+
+   $data = $request->validate(
+        [
+            'chat_id'            => 'required|integer',
+            'message'             => 'required'
         ]);
-    }
-    $user = Auth::user();
-    $chat=Chat::where('user_id',auth()->user()->id)->first();
+    $chat=Chat::find($request->chat_id)->first();
 
-    $request->validate(
-    [
-        'message'             => 'required'
-    ]);
+       if($chat->employee_id == auth()->user()->id) {
+           $data['type'] = 1 ;
+           $data['deaf_view'] = 0;
+           $data['employee_view'] = 1;
 
-    $message= $chat->message()->create(
-    [
-        'message'           => $request->message,
-        'sender_id'         => $user->id,
-        'user_view'         => 1,
+       }
 
-    ]);
+       elseif($chat->deaf_id == auth()->user()->id) {
+           $data['type'] = 2 ;
+           $data['deaf_view'] = 1;
+           $data['employee_view'] = 0;
+       }
+    $message= $chat->message()->create();
 
-    //event(new ChannelID($chat->id));
-    broadcast(new MessageSent($user, $message))->toOthers();
+  //  broadcast(new MessageSent($user, $message))->toOthers();
 
     return $this->response([], trans('api.messageSent'));
 }
 
-    public function markRead()
-        {
-        //chat messages
-        $chat=Chat::where('user_id',auth()->user()->id)->first();
-            if(!isset($chat))
-            return  $this->error(trans("api.wrong"));
-        //mark as read
-         $message= Message::where('chat_id', $chat->id)->update(['user_view' => 1]);
-            return $this->response([],trans('api.done'));
-        }
+
 
 //  public function saveToken(Request $request)
 //     {

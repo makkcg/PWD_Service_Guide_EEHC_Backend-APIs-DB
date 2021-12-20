@@ -25,7 +25,7 @@ use Illuminate\Support\Str;
  * <aside class="notice">Author Fahmi Moustafa</aside>
  * APIs for managing Users
  */
-class UserController extends Controller
+class EmployeeController extends Controller
 {
     use FileManagement;
     /**
