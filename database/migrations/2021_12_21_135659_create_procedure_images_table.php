@@ -15,6 +15,11 @@ class CreateProcedureImagesTable extends Migration
     {
         Schema::create('procedure_images', function (Blueprint $table) {
             $table->id();
+            $table->string('image');
+            $table->foreignId('procedure_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('procedure_id')->references('id')->on('procedures')->onDelete('cascade');
             $table->timestamps();
         });
     }

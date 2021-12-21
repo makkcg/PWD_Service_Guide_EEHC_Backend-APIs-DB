@@ -15,6 +15,12 @@ class CreateBranchSoundTranslationsTable extends Migration
     {
         Schema::create('branch_sound_translations', function (Blueprint $table) {
             $table->id();
+            $table->string('video');
+            $table->string('locale')->index();
+            $table->foreignId('branch_video_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('branch_video_id')->references('id')->on('branch_videos')->onDelete('cascade');
             $table->timestamps();
         });
     }

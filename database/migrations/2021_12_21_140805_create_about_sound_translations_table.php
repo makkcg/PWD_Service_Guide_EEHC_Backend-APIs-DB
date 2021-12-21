@@ -15,6 +15,12 @@ class CreateAboutSoundTranslationsTable extends Migration
     {
         Schema::create('about_sound_translations', function (Blueprint $table) {
             $table->id();
+            $table->string('sound');
+            $table->string('locale')->index();
+            $table->foreignId('about_sound_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('about_sound_id')->references('id')->on('about_sounds')->onDelete('cascade');
             $table->timestamps();
         });
     }

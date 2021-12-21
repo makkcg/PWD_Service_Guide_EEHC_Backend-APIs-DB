@@ -15,6 +15,10 @@ class CreateRegulationsTable extends Migration
     {
         Schema::create('regulations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('creator_id');
+            $table->foreignId('service_id');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ class CreateAboutVideosTable extends Migration
     {
         Schema::create('about_videos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('creator_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

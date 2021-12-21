@@ -15,7 +15,13 @@ class CreateCountryTranslationsTable extends Migration
     {
         Schema::create('country_translations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('country_id');
+            $table->string('locale')->index();
+            $table->foreignId('creator_id');
+            $table->softDeletes();
             $table->timestamps();
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
         });
     }
 

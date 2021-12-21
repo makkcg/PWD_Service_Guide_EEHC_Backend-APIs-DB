@@ -15,6 +15,8 @@ class CreateFoundationSoundsTable extends Migration
     {
         Schema::create('foundation_sounds', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('creator_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

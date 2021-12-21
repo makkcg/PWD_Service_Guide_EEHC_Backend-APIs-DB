@@ -15,6 +15,12 @@ class CreateRegulationTranslationMediaTable extends Migration
     {
         Schema::create('regulation_translation_media', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('regulation_translation_id');
+            $table->foreignId('creator_id');
+            $table->string('desc_sound');
+            $table->string('desc_video');
+            $table->softDeletes();
+            $table->foreign('regulation_translation_id')->references('id')->on('regulation_translations')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ class CreateAboutSoundsTable extends Migration
     {
         Schema::create('about_sounds', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('creator_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

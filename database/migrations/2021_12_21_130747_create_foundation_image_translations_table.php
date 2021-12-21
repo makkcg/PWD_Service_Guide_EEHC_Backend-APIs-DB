@@ -15,6 +15,12 @@ class CreateFoundationImageTranslationsTable extends Migration
     {
         Schema::create('foundation_image_translations', function (Blueprint $table) {
             $table->id();
+            $table->string('image');
+            $table->string('locale')->index();
+            $table->foreignId('foundation_image_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('foundation_image_id')->references('id')->on('foundation_images')->onDelete('cascade');
             $table->timestamps();
         });
     }

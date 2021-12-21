@@ -15,6 +15,8 @@ class CreateBranchSoundsTable extends Migration
     {
         Schema::create('branch_sounds', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('creator_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

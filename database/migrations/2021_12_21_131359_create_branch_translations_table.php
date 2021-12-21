@@ -15,6 +15,15 @@ class CreateBranchTranslationsTable extends Migration
     {
         Schema::create('branch_translations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('desc');
+            $table->text('note');
+            $table->text('address');
+            $table->string('locale')->index();
+            $table->foreignId('branch_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->timestamps();
         });
     }

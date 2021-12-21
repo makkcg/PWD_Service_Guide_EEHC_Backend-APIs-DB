@@ -15,6 +15,13 @@ class CreateDocumentTranslationsTable extends Migration
     {
         Schema::create('document_translations', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('desc');
+            $table->string('locale')->index();
+            $table->foreignId('document_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade');
             $table->timestamps();
         });
     }

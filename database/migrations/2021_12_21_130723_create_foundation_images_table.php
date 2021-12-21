@@ -15,6 +15,8 @@ class CreateFoundationImagesTable extends Migration
     {
         Schema::create('foundation_images', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('creator_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

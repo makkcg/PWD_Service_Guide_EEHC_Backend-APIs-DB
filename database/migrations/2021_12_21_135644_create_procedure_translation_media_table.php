@@ -15,6 +15,12 @@ class CreateProcedureTranslationMediaTable extends Migration
     {
         Schema::create('procedure_translation_media', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('procedure_translation_id');
+            $table->foreignId('creator_id');
+            $table->string('desc_sound');
+            $table->string('desc_video');
+            $table->softDeletes();
+            $table->foreign('procedure_translation_id')->references('id')->on('procedure_translations')->onDelete('cascade');
             $table->timestamps();
         });
     }

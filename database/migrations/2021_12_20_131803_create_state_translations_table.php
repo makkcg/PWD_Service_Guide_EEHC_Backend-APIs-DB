@@ -15,7 +15,13 @@ class CreateStateTranslationsTable extends Migration
     {
         Schema::create('state_translations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('state_id');
+            $table->string('locale')->index();
+            $table->string('creator_id');
+            $table->softDeletes();
             $table->timestamps();
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
         });
     }
 

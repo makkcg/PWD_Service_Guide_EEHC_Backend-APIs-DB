@@ -15,6 +15,12 @@ class CreateFaqTranslationsTable extends Migration
     {
         Schema::create('faq_translations', function (Blueprint $table) {
             $table->id();
+            $table->text('q_and_answer');
+            $table->string('locale')->index();
+            $table->foreignId('faq_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('faq_id')->references('id')->on('faqs')->onDelete('cascade');
             $table->timestamps();
         });
     }

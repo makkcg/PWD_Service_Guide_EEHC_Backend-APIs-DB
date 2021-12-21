@@ -15,6 +15,11 @@ class CreateDocumentImagesTable extends Migration
     {
         Schema::create('document_images', function (Blueprint $table) {
             $table->id();
+            $table->string('image');
+            $table->foreignId('document_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade');
             $table->timestamps();
         });
     }

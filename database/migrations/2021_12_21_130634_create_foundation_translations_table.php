@@ -15,6 +15,13 @@ class CreateFoundationTranslationsTable extends Migration
     {
         Schema::create('foundation_translations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('desc');
+            $table->string('locale')->index();
+            $table->foreignId('foundation_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('foundation_id')->references('id')->on('foundations')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ class CreateFoundationVideosTable extends Migration
     {
         Schema::create('foundation_videos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('creator_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

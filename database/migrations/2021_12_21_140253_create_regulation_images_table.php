@@ -15,6 +15,11 @@ class CreateRegulationImagesTable extends Migration
     {
         Schema::create('regulation_images', function (Blueprint $table) {
             $table->id();
+            $table->string('image');
+            $table->foreignId('regulation_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('regulation_id')->references('id')->on('regulations')->onDelete('cascade');
             $table->timestamps();
         });
     }

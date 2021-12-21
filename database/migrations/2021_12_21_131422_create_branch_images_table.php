@@ -15,6 +15,8 @@ class CreateBranchImagesTable extends Migration
     {
         Schema::create('branch_images', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('creator_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

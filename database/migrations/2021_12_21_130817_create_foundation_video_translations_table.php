@@ -15,6 +15,12 @@ class CreateFoundationVideoTranslationsTable extends Migration
     {
         Schema::create('foundation_video_translations', function (Blueprint $table) {
             $table->id();
+            $table->string('video');
+            $table->string('locale')->index();
+            $table->foreignId('foundation_video_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('foundation_video_id')->references('id')->on('foundation_videos')->onDelete('cascade');
             $table->timestamps();
         });
     }

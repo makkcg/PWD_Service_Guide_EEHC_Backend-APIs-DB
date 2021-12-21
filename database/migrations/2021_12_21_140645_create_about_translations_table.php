@@ -15,6 +15,12 @@ class CreateAboutTranslationsTable extends Migration
     {
         Schema::create('about_translations', function (Blueprint $table) {
             $table->id();
+            $table->text('desc');
+            $table->string('locale')->index();
+            $table->foreignId('about_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('about_id')->references('id')->on('abouts')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ class CreateBranchVideosTable extends Migration
     {
         Schema::create('branch_videos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('creator_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

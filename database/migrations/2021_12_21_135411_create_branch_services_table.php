@@ -15,6 +15,11 @@ class CreateBranchServicesTable extends Migration
     {
         Schema::create('branch_services', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('branch_id');
+            $table->foreignId('service_id');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

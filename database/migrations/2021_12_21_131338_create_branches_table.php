@@ -15,6 +15,19 @@ class CreateBranchesTable extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('foundation_id');
+            $table->foreignId('city_id');
+            $table->foreignId('creator_id');
+            $table->string('map');
+            $table->tinyInteger('pwd_status');
+            $table->string('phone1')->nullable();
+            $table->string('phone2')->nullable();
+            $table->string('landline1')->nullable();
+            $table->string('landline2')->nullable();
+            $table->string('email');
+            $table->softDeletes();
+            $table->foreign('foundation_id')->references('id')->on('foundations')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->timestamps();
         });
     }

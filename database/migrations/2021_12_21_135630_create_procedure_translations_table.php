@@ -15,6 +15,12 @@ class CreateProcedureTranslationsTable extends Migration
     {
         Schema::create('procedure_translations', function (Blueprint $table) {
             $table->id();
+            $table->text('desc');
+            $table->string('locale')->index();
+            $table->foreignId('procedure_id');
+            $table->foreignId('creator_id');
+            $table->softDeletes();
+            $table->foreign('procedure_id')->references('id')->on('procedures')->onDelete('cascade');
             $table->timestamps();
         });
     }
