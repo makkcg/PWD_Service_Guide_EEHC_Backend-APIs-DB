@@ -87,19 +87,22 @@ class ChatController extends Controller
             'chat_id'            => 'required|integer',
             'message'             => 'required'
         ]);
-    $chat=Chat::find($request->chat_id)->where('status' , 1)->first();
+    $chat=Chat::where('status', 1)->find($request->chat_id);
        if(isset($chat)){
        if($chat->employee_id == auth()->user()->id) {
            $data['type'] = 1 ;
            $data['deaf_view'] = 0;
            $data['employee_view'] = 1;
-
        }
 
        elseif($chat->deaf_id == auth()->user()->id) {
            $data['type'] = 2 ;
            $data['deaf_view'] = 1;
            $data['employee_view'] = 0;
+       }
+       else{
+        $error = array(["failed" => [trans("api/user.failed_operation")]]);
+        return response()->error($error, trans("api/user.chat_not_found"));
        }
      $chat->messages()->create($data);
 
@@ -112,19 +115,6 @@ class ChatController extends Controller
 }
 
 
-
-//  public function saveToken(Request $request)
-//     {
-//        $request->validate(
-//             [
-//                 'device_token'          => 'required' ,
-//                 ]);
-//         $user= auth()->user();
-//         $user->device_token=$request->device_token;
-//         $user->update();
-//         return $this->response([],trans('api.done'));
-
-//     }
 
     }
 

@@ -31,7 +31,6 @@ class EmployeeController extends Controller
         }
         $request->authenticate();
         $user = $request->user();
-
         return response()->success(array(new UserProfileResource($user)), trans("api/user.user_found"));
     }
 
@@ -40,9 +39,9 @@ class EmployeeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "name" => ["required", "string", "max:60"],
-            "phone" => ["required", "string", "max:60"],
+            "phone" => ["required", "string", "max:60","unique:users,phone"],
             "email" => ["required", "email:rfc,filter", "unique:users,email"],
-            "password" => ["required", "confirmed", PasswordRules::min(8)],
+            "password" => ["nullable", "confirmed", PasswordRules::min(8)],
             "UUID" => ["nullable", "string"],
         ]);
         if ($validator->fails()) {
@@ -73,7 +72,7 @@ class EmployeeController extends Controller
         $user = $request->user();
         $validator = Validator::make($request->all(), [
             "name" => ["nullable", "string", "max:60"],
-            "phone" => ["nullable", "string", "max:60"],
+            "phone" => ["nullable", "string", "max:60","unique:users,phone,".$user->id],
             "email" => ["required", "email:rfc,filter", "unique:users,email,".$user->id],
             "password" => ["nullable", "confirmed", PasswordRules::min(8)],
         ]);

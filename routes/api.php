@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\APIs\EmployeeController;
 use App\Http\Controllers\APIs\ChatController;
+use App\Http\Controllers\APIs\DeafController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +42,7 @@ Route::group(["prefix" => "v1"], function () {
 
     Route::group(["prefix" => "deaf"], function () {
         Route::group(["prefix" => "auth"], function () {
-
+            Route::post("register", [DeafController::class, "register"]);
         });
         Route::group(["prefix" => "profile", "middleware" => ["auth:sanctum", "scopes:user"]], function () {
 
