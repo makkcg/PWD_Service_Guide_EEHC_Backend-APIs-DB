@@ -18,7 +18,6 @@ class CreateRegulationTranslationsTable extends Migration
             $table->text('desc');
             $table->string('locale')->index();
             $table->foreignId('regulation_id');
-            $table->foreignId('creator_id');
             $table->softDeletes();
             $table->foreign('regulation_id')->references('id')->on('regulations')->onDelete('cascade');
             $table->timestamps();

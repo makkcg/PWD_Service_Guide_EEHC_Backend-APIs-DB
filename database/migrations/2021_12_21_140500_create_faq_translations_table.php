@@ -18,7 +18,6 @@ class CreateFaqTranslationsTable extends Migration
             $table->text('q_and_answer');
             $table->string('locale')->index();
             $table->foreignId('faq_id');
-            $table->foreignId('creator_id');
             $table->softDeletes();
             $table->foreign('faq_id')->references('id')->on('faqs')->onDelete('cascade');
             $table->timestamps();

@@ -18,7 +18,6 @@ class CreateFoundationVideoTranslationsTable extends Migration
             $table->string('video');
             $table->string('locale')->index();
             $table->foreignId('foundation_video_id');
-            $table->foreignId('creator_id');
             $table->softDeletes();
             $table->foreign('foundation_video_id')->references('id')->on('foundation_videos')->onDelete('cascade');
             $table->timestamps();

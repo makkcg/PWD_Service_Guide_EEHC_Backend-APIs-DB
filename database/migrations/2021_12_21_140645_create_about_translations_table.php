@@ -18,7 +18,6 @@ class CreateAboutTranslationsTable extends Migration
             $table->text('desc');
             $table->string('locale')->index();
             $table->foreignId('about_id');
-            $table->foreignId('creator_id');
             $table->softDeletes();
             $table->foreign('about_id')->references('id')->on('abouts')->onDelete('cascade');
             $table->timestamps();

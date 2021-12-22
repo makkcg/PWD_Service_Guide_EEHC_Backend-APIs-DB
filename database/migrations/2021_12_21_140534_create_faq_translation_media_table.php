@@ -16,7 +16,6 @@ class CreateFaqTranslationMediaTable extends Migration
         Schema::create('faq_translation_media', function (Blueprint $table) {
             $table->id();
             $table->foreignId('faq_translation_id');
-            $table->foreignId('creator_id');
             $table->string('q_and_a_sound');
             $table->string('q_and_a_video');
             $table->softDeletes();

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class BranchService extends Model
 {
     use HasFactory;
+
+    // no its a pivot table dude
 }

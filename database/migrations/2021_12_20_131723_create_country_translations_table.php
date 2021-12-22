@@ -18,7 +18,6 @@ class CreateCountryTranslationsTable extends Migration
             $table->string('name');
             $table->foreignId('country_id');
             $table->string('locale')->index();
-            $table->foreignId('creator_id');
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');

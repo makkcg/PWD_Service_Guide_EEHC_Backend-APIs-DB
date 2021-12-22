@@ -18,7 +18,6 @@ class CreateBranchImageTranslationsTable extends Migration
             $table->string('image');
             $table->string('locale')->index();
             $table->foreignId('branch_image_id');
-            $table->foreignId('creator_id');
             $table->softDeletes();
             $table->foreign('branch_image_id')->references('id')->on('branch_images')->onDelete('cascade');
             $table->timestamps();

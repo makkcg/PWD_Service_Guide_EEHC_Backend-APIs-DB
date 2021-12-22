@@ -19,7 +19,6 @@ class CreateDocumentTranslationsTable extends Migration
             $table->text('desc');
             $table->string('locale')->index();
             $table->foreignId('document_id');
-            $table->foreignId('creator_id');
             $table->softDeletes();
             $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade');
             $table->timestamps();

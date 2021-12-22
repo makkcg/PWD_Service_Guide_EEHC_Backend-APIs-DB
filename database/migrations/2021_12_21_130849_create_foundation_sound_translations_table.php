@@ -18,7 +18,6 @@ class CreateFoundationSoundTranslationsTable extends Migration
             $table->string('sound');
             $table->string('locale')->index();
             $table->foreignId('foundation_sound_id');
-            $table->foreignId('creator_id');
             $table->softDeletes();
             $table->foreign('foundation_sound_id')->references('id')->on('foundation_sounds')->onDelete('cascade');
             $table->timestamps();

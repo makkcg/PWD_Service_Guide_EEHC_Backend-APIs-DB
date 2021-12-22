@@ -18,7 +18,6 @@ class CreateStateTranslationsTable extends Migration
             $table->string('name');
             $table->foreignId('state_id');
             $table->string('locale')->index();
-            $table->string('creator_id');
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');

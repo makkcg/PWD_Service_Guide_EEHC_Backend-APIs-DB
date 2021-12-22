@@ -18,7 +18,6 @@ class CreateCityTranslationsTable extends Migration
             $table->string('name');
             $table->foreignId('city_id');
             $table->string('locale')->index();
-            $table->foreignId('creator_id');
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');

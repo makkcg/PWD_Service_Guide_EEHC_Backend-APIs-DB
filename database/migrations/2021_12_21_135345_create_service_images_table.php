@@ -21,6 +21,7 @@ class CreateServiceImagesTable extends Migration
             $table->softDeletes();
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->timestamps();
+
         });
     }
 

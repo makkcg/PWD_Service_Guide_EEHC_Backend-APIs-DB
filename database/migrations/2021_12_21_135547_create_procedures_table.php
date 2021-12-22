@@ -15,7 +15,7 @@ class CreateProceduresTable extends Migration
     {
         Schema::create('procedures', function (Blueprint $table) {
             $table->id();
-            $table->integer('step_no');
+            $table->integer('order');
             $table->foreignId('creator_id');
             $table->foreignId('service_id');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');

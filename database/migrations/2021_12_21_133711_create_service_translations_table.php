@@ -19,7 +19,6 @@ class CreateServiceTranslationsTable extends Migration
             $table->string('desc');
             $table->string('locale')->index();
             $table->foreignId('service_id');
-            $table->foreignId('creator_id');
             $table->softDeletes();
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->timestamps();

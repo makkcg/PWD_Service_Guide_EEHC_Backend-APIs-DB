@@ -16,6 +16,8 @@ class CreateBranchVideosTable extends Migration
         Schema::create('branch_videos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('creator_id');
+            $table->foreignId('branch_id');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

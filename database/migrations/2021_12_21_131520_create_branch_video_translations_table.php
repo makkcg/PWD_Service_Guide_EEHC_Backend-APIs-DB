@@ -18,7 +18,6 @@ class CreateBranchVideoTranslationsTable extends Migration
             $table->string('video');
             $table->string('locale')->index();
             $table->foreignId('branch_video_id');
-            $table->foreignId('creator_id');
             $table->softDeletes();
             $table->foreign('branch_video_id')->references('id')->on('branch_videos')->onDelete('cascade');
             $table->timestamps();
