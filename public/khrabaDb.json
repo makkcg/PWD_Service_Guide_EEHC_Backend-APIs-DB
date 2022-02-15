@@ -1,0 +1,417 @@
+{
+    "data": {
+        "foundation": {
+            "foundation_id": 1,
+            "name": "شركة الكهرباء ",
+            "foundation_desc": " عن المؤسسة  عن المؤسسة عن المؤسسة ",
+            "branchname": "كل الفروع",
+            "phone": "+201000000",
+            "landline": "023811111",
+            "website": "www.example.com",
+            "map": "maps.com",
+            "about": {
+                "id": 1,
+                "description": " عن البرنامج  عن البرنامج عن البرنامج ",
+                "videos": [
+                    {
+                        "id": 1,
+                        "video": "abouts/videos/video1.mp3"
+                    },
+                    {
+                        "id": 2,
+                        "video": "abouts/videos/video2.mp3"
+                    }
+                ],
+                "sounds": [
+                    {
+                        "id": 1,
+                        "sound": "abouts/sounds/sound1.mp3"
+                    },
+                    {
+                        "id": 2,
+                        "sound": "abouts/sounds/sound2.mp3"
+                    }
+                ]
+            },
+            "email": "example@example.com",
+            "imgs": [
+                "foundations/images/image2.png"
+            ],
+            "vids": [
+                "foundations/videos/video1.mp3",
+                "foundations/videos/video2.mp3"
+            ],
+            "sound": [
+                "foundations/sounds/sound1.mp3",
+                "foundations/sounds/sound2.mp3"
+            ],
+            "branches": []
+        },
+        "allservices": [
+            {
+                "id": 1,
+                "title": "اسم الخدمة",
+                "has_subservice": 1,
+                "desc": " عن الخدمة  عن الخدمة عن الخدمة ",
+                "sound": [
+                    "services/sounds/desc/desc_sound1.mp3"
+                ],
+                "vids": [
+                    "services/videos/desc/desc_video1.mp4"
+                ],
+                "imgs": [
+                    "services/images/image1.png",
+                    "services/images/image2.png"
+                ],
+                "sub_services": [
+                    {
+                        "id": 2,
+                        "title": " اسم الخدمة الداخلية",
+                        "has_subservice": 0,
+                        "desc": " عن الخدمة الداخلية عن الخدمة الداخلية عن الخدمة ",
+                        "sound": [
+                            "services/sounds/desc/desc_sound1.mp3"
+                        ],
+                        "vids": [
+                            "services/videos/desc/desc_video1.mp4"
+                        ],
+                        "imgs": [
+                            "services/images/image1.png",
+                            "services/images/image2.png"
+                        ],
+                        "sub_services": [],
+                        "docs": [
+                            {
+                                "id": 3,
+                                "title": "اسم المستند1",
+                                "desc": "1 عن المستند  عن المستند عن المستند ",
+                                "sound": [
+                                    "documents/sounds/desc/desc_sound1.mp3"
+                                ],
+                                "vids": [
+                                    "documents/videos/desc/desc_video1.mp4"
+                                ],
+                                "imgs": [
+                                    "documents/images/image1.png",
+                                    "documents/images/image2.png"
+                                ]
+                            },
+                            {
+                                "id": 4,
+                                "title": "اسم المستند2",
+                                "desc": "2 عن المستند  عن المستند عن المستند ",
+                                "sound": [
+                                    "documents/sounds/desc/desc_sound1.mp3"
+                                ],
+                                "vids": [
+                                    "documents/videos/desc/desc_video1.mp4"
+                                ],
+                                "imgs": [
+                                    "documents/images/image1.png",
+                                    "documents/images/image2.png"
+                                ]
+                            }
+                        ],
+                        "faqs": [
+                            {
+                                "id": 3,
+                                "question": "السؤال 1 ؟",
+                                "answer": "الاجابة 1",
+                                "sound": [
+                                    "faqs/sounds/q_and_a/q_and_a_sound1.mp3"
+                                ],
+                                "vids": [
+                                    "faqs/videos/q_and_a/q_and_a_video1.mp4"
+                                ],
+                                "imgs": [
+                                    "faqs/images/image1.png",
+                                    "faqs/images/image2.png"
+                                ]
+                            },
+                            {
+                                "id": 4,
+                                "question": "السؤال 2 ؟",
+                                "answer": "الاجابة 2",
+                                "sound": [
+                                    "faqs/sounds/q_and_a/q_and_a_sound1.mp3"
+                                ],
+                                "vids": [
+                                    "faqs/videos/q_and_a/q_and_a_video1.mp4"
+                                ],
+                                "imgs": [
+                                    "faqs/images/image1.png",
+                                    "faqs/images/image2.png"
+                                ]
+                            }
+                        ],
+                        "procedures": [
+                            {
+                                "id": 3,
+                                "title": "خطوة رقم 1",
+                                "desc": "1 عن الاجراء  عن الاجراء عن الاجراء ",
+                                "sound": [
+                                    "procedures/sounds/desc/desc_sound1.mp3"
+                                ],
+                                "vids": [
+                                    "procedures/videos/desc/desc_video1.mp4"
+                                ],
+                                "imgs": [
+                                    "procedures/images/image1.png",
+                                    "procedures/images/image2.png"
+                                ]
+                            },
+                            {
+                                "id": 4,
+                                "title": "خطوة رقم 2",
+                                "desc": "2 عن الاجراء  عن الاجراء عن الاجراء ",
+                                "sound": [
+                                    "procedures/sounds/desc/desc_sound1.mp3"
+                                ],
+                                "vids": [
+                                    "procedures/videos/desc/desc_video1.mp4"
+                                ],
+                                "imgs": [
+                                    "procedures/images/image1.png",
+                                    "procedures/images/image2.png"
+                                ]
+                            }
+                        ],
+                        "regulations": [
+                            {
+                                "id": 3,
+                                "description": "1 عن القواعد  عن القواعد عن القواعد ",
+                                "description_sounds": [
+                                    {
+                                        "id": 3,
+                                        "sound": "regulations/sounds/desc/desc_sound1.mp3"
+                                    }
+                                ],
+                                "description_videos": [
+                                    {
+                                        "id": 3,
+                                        "video": "regulations/videos/desc/desc_video1.mp4"
+                                    }
+                                ],
+                                "images": [
+                                    {
+                                        "id": 5,
+                                        "image": "regulations/images/image1.png"
+                                    },
+                                    {
+                                        "id": 6,
+                                        "image": "regulations/images/image2.png"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 4,
+                                "description": "2 عن القواعد  عن القواعد عن القواعد ",
+                                "description_sounds": [
+                                    {
+                                        "id": 4,
+                                        "sound": "regulations/sounds/desc/desc_sound1.mp3"
+                                    }
+                                ],
+                                "description_videos": [
+                                    {
+                                        "id": 4,
+                                        "video": "regulations/videos/desc/desc_video1.mp4"
+                                    }
+                                ],
+                                "images": [
+                                    {
+                                        "id": 7,
+                                        "image": "regulations/images/image1.png"
+                                    },
+                                    {
+                                        "id": 8,
+                                        "image": "regulations/images/image2.png"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "docs": [
+                    {
+                        "id": 1,
+                        "title": "اسم المستند1",
+                        "desc": "1 عن المستند  عن المستند عن المستند ",
+                        "sound": [
+                            "documents/sounds/desc/desc_sound1.mp3"
+                        ],
+                        "vids": [
+                            "documents/videos/desc/desc_video1.mp4"
+                        ],
+                        "imgs": [
+                            "documents/images/image1.png",
+                            "documents/images/image2.png"
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "title": "اسم المستند2",
+                        "desc": "2 عن المستند  عن المستند عن المستند ",
+                        "sound": [
+                            "documents/sounds/desc/desc_sound1.mp3"
+                        ],
+                        "vids": [
+                            "documents/videos/desc/desc_video1.mp4"
+                        ],
+                        "imgs": [
+                            "documents/images/image1.png",
+                            "documents/images/image2.png"
+                        ]
+                    }
+                ],
+                "faqs": [
+                    {
+                        "id": 1,
+                        "question": "السؤال 1 ؟",
+                        "answer": "الاجابة 1",
+                        "sound": [
+                            "faqs/sounds/q_and_a/q_and_a_sound1.mp3"
+                        ],
+                        "vids": [
+                            "faqs/videos/q_and_a/q_and_a_video1.mp4"
+                        ],
+                        "imgs": [
+                            "faqs/images/image1.png",
+                            "faqs/images/image2.png"
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "question": "السؤال 2 ؟",
+                        "answer": " الاجابة 2",
+                        "sound": [
+                            "faqs/sounds/q_and_a/q_and_a_sound1.mp3"
+                        ],
+                        "vids": [
+                            "faqs/videos/q_and_a/q_and_a_video1.mp4"
+                        ],
+                        "imgs": [
+                            "faqs/images/image1.png",
+                            "faqs/images/image2.png"
+                        ]
+                    }
+                ],
+                "procedures": [
+                    {
+                        "id": 1,
+                        "title": "خطوة رقم 1",
+                        "desc": "1 عن الاجراء  عن الاجراء عن الاجراء ",
+                        "sound": [
+                            "procedures/sounds/desc/desc_sound1.mp3"
+                        ],
+                        "vids": [
+                            "procedures/videos/desc/desc_video1.mp4"
+                        ],
+                        "imgs": [
+                            "procedures/images/image1.png",
+                            "procedures/images/image2.png"
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "title": "خطوة رقم 2",
+                        "desc": "2 عن الاجراء  عن الاجراء عن الاجراء ",
+                        "sound": [
+                            "procedures/sounds/desc/desc_sound1.mp3"
+                        ],
+                        "vids": [
+                            "procedures/videos/desc/desc_video1.mp4"
+                        ],
+                        "imgs": [
+                            "procedures/images/image1.png",
+                            "procedures/images/image2.png"
+                        ]
+                    }
+                ],
+                "regulations": [
+                    {
+                        "id": 1,
+                        "description": "1 عن القواعد  عن القواعد عن القواعد ",
+                        "description_sounds": [
+                            {
+                                "id": 1,
+                                "sound": "regulations/sounds/desc/desc_sound1.mp3"
+                            }
+                        ],
+                        "description_videos": [
+                            {
+                                "id": 1,
+                                "video": "regulations/videos/desc/desc_video1.mp4"
+                            }
+                        ],
+                        "images": [
+                            {
+                                "id": 1,
+                                "image": "regulations/images/image1.png"
+                            },
+                            {
+                                "id": 2,
+                                "image": "regulations/images/image2.png"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "description": "2 عن القواعد  عن القواعد عن القواعد ",
+                        "description_sounds": [
+                            {
+                                "id": 2,
+                                "sound": "regulations/sounds/desc/desc_sound1.mp3"
+                            }
+                        ],
+                        "description_videos": [
+                            {
+                                "id": 2,
+                                "video": "regulations/videos/desc/desc_video1.mp4"
+                            }
+                        ],
+                        "images": [
+                            {
+                                "id": 3,
+                                "image": "regulations/images/image1.png"
+                            },
+                            {
+                                "id": 4,
+                                "image": "regulations/images/image2.png"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "branches_contacts": [
+            {
+                "id": 1,
+                "gov": "الخليفة",
+                "branch": "اسم الفرع",
+                "description": " عن الفرع  عن الفرع عن الفرع ",
+                "note": "ملاحظات ملاحظات ملاحظات ",
+                "address": "عنوان الفرع",
+                "map": "map.com",
+                "mobile": "+2015152514",
+                "phone2": "+2015545454",
+                "tel1": "021545454",
+                "tel2": "025545454",
+                "disability": 1,
+                "email": "example@example.com",
+                "imgs": [
+                    "branches/images/image1.png",
+                    "branches/images/image2.png"
+                ],
+                "vids": [
+                    "branches/videos/video1.mp3",
+                    "branches/videos/video2.mp3"
+                ],
+                "sound": [
+                    "branches/sounds/sound1.mp3",
+                    "branches/sounds/sound2.mp3"
+                ]
+            }
+        ]
+    }
+}
